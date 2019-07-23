@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <a href="/shows">Go Back</a>
+        <h1>Edit {{title}}</h1>
+        <form action="/edit_show/{{this_show.id}}" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="form-group col-md-10">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="{{this_show.title}}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="network">Network</label>
+                    <input type="text" class="form-control" name="network" id="network"
+                        placeholder="{{this_show.network}}">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="release_date">Release Date</label>
+                    <input type="date" class="form-control" name="release_date" id="release_date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-10">
+                    <label for="desc">Description</label>
+                    <textarea class="form-control" name="desc" id="desc"
+                        placeholder="{{this_show.description}}"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+        <br>
+        <a href="/shows/{{this_show.id}}">Go to Show</a>
+    </div>
+</body>
+
+</html>
